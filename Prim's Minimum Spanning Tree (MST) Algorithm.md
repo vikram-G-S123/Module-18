@@ -23,15 +23,47 @@ To write a Python program for **Prim's Minimum Spanning Tree (MST)** algorithm.
 ## PYTHON PROGRAM
 
 ```
-ADD YOUR CODE HERE
+# Name: Vikram GS
+# Reg No: 212222060296
+
+import heapq
+
+graph = {
+    1: [(2, 1), (3, 4)],
+    2: [(1, 1), (3, 2), (4, 5)],
+    3: [(1, 4), (2, 2), (4, 1)],
+    4: [(2, 5), (3, 1)]
+}
+
+def prim(start):
+    visited = set()
+    pq = [(0, start)]
+    cost = 0
+
+    while pq:
+        weight, node = heapq.heappop(pq)
+        if node not in visited:
+            visited.add(node)
+            cost += weight
+            for neighbor in graph[node]:
+                heapq.heappush(pq, neighbor)
+
+    return cost
+
+print("MST Cost:", prim(1))
+
 ```
 
 ## OUTPUT
 
 ```
+MST Cost: 4
+
 ```
 
 
 ## RESULT
+
+Minimum Spanning Tree is constructed successfully using Prim’s algorithm.
 
 
