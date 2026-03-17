@@ -20,12 +20,51 @@ To write a Python program for **Kruskal's algorithm** to find the Minimum Spanni
 ## PYTHON PROGRAM
 
 ```
-ENTER YOUR CODE HERE
+# Name: Vikram GS
+# Reg No: 212222060296
+
+edges = [
+    (1, 2, 1),
+    (2, 3, 2),
+    (1, 3, 4),
+    (3, 4, 1),
+    (2, 4, 5)
+]
+
+parent = {}
+
+def find(x):
+    if parent[x] == x:
+        return x
+    return find(parent[x])
+
+def union(x, y):
+    parent[find(x)] = find(y)
+
+nodes = {1, 2, 3, 4}
+for n in nodes:
+    parent[n] = n
+
+edges.sort(key=lambda x: x[2])
+
+mst_cost = 0
+
+for u, v, w in edges:
+    if find(u) != find(v):
+        union(u, v)
+        mst_cost += w
+
+print("MST Cost:", mst_cost)
+
 ```
 
 ## OUTPUT
 `````
+MST Cost: 4
+
 `````
 
 ## RESULT
+
+Minimum Spanning Tree is constructed successfully using Kruskal’s algorithm.
 
