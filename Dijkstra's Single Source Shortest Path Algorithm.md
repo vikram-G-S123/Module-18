@@ -21,11 +21,42 @@ Create a `sptSet[]` array (shortest path tree set) to keep track of vertices who
 ## PYTHON PROGRAM
 
 ```
-ENTER YOUR CODE HERE
+# Name: Vikram GS
+# Reg No: 212222060296
+
+import heapq
+
+graph = {
+    1: [(2, 1), (3, 4)],
+    2: [(3, 2), (4, 5)],
+    3: [(4, 1)],
+    4: []
+}
+
+def dijkstra(start):
+    pq = [(0, start)]
+    dist = {node: float('inf') for node in graph}
+    dist[start] = 0
+
+    while pq:
+        d, node = heapq.heappop(pq)
+        for neighbor, weight in graph[node]:
+            if dist[neighbor] > d + weight:
+                dist[neighbor] = d + weight
+                heapq.heappush(pq, (dist[neighbor], neighbor))
+
+    return dist
+
+print("Shortest paths:", dijkstra(1))
+
 ```
 
 ## OUTPUT
 ```
+Shortest paths: {1: 0, 2: 1, 3: 3, 4: 4}
+
 ```
 
 ## RESULT
+
+Shortest path from source to all vertices is calculated successfully.
